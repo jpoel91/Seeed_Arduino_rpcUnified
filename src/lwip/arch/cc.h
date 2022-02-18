@@ -40,8 +40,12 @@
 #include <stdio.h>
 
 #include "lwip/arch/sys_arch.h"
-
-#define BYTE_ORDER LITTLE_ENDIAN
+#ifndef BYTE_ORDER
+  #define BYTE_ORDER LITTLE_ENDIAN
+#else
+  #undef BYTE_ORDER
+  #define BYTE_ORDER LITTLE_ENDIAN
+#endif
 
 typedef uint8_t  u8_t;
 typedef int8_t   s8_t;
